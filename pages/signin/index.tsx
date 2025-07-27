@@ -1,14 +1,32 @@
 import React, {useState, useEffect} from 'react'
+import {useRouter} from 'next/router'
 import styles from '../../styles/Home.module.css'
 import {Form, Button} from 'react-bootstrap'
 import {useAuth} from '../../contexts/AuthContext'
 
 export default function SignIn(){
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const {
-    signin
+    signin,
+    page
   } = useAuth()
+
+  const signInFunc = async(e:any) => {
+    e.preventDefault()
+    try{
+      await signin(email, password)
+      if(typeof page !== 'undefined'){
+        router.push(`${page}`)
+      }
+      else{
+        router.push('/')
+      }
+    }catch(error){
+      
+    }
+  }
   return(
     <>
       <center>
@@ -17,7 +35,7 @@ export default function SignIn(){
             <center>
               <h2><b>Sign In</b></h2>
             </center>
-            <Form>
+            <Form onSubmit={signInFunc}>
               <Form.Group className="mb-3">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="text" placeholder="test@email.com" onChange={(e:any) => setEmail(e.target.value)}/>
@@ -28,7 +46,7 @@ export default function SignIn(){
               </Form.Group>
               <Form.Group className="mb-3">
                 <div className={styles.blackbtn}>
-                  <Button size="lg" variant="custom">Sign In</Button>
+                  <Button size="lg" variant="custom" type="submit">Sign In</Button>
                 </div>
               </Form.Group>
             </Form>

@@ -2,6 +2,10 @@
   padding: 0 2rem;
 }
 
+.box {
+  border: solid black 1px;
+  border-radius: 2%;
+}
 .blackbtn :global(.btn-custom){
   background-color: black;
   color: white;
@@ -123,8 +127,10 @@
 }
 
 @media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+  .authbox {
+    width: 90%;
+    border-radius: 2%;
   }
 }
+
+

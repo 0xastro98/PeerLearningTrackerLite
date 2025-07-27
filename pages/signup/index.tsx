@@ -34,6 +34,7 @@ export default function SignUp(){
       <div className={styles.authpage}>
         <center>
           <div className={styles.authbox}>
+            <h2><b>Sign Up</b></h2>
             <Form onSubmit={signUpFunc}>
               <Form.Group className="mb-3">
                 <Form.Label>First Name</Form.Label>
@@ -53,11 +54,11 @@ export default function SignUp(){
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>Confirm Password</Form.Label>
-                <Form.Control type="password" onChange={(e:any) => setPassword(e.target.value)} size="lg" />
+                <Form.Control type="password" onChange={(e:any) => setConfirmPassword(e.target.value)} size="lg" />
               </Form.Group>
               <Form.Group className="mb-3">
                 <div className={styles.blackbtn}>
-                  <Button variant="custom" size="lg">Sign Up</Button> 
+                  <Button variant="custom" size="lg" type="submit">Sign Up</Button> 
                 </div>
               </Form.Group>
             </Form>
