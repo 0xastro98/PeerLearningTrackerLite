@@ -1,10 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import styles from '../../styles/Home.module.css'
 import {Form, Button} from 'react-bootstrap'
+import {useAuth} from '../../contexts/AuthContext'
 
 export default function SignIn(){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const {
+    signin
+  } = useAuth()
   return(
     <>
       <center>

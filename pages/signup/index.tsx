@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import styles from '../../styles/Home.module.css'
 import {Form, Button} from 'react-bootstrap'
-import { FORMERR } from 'dns'
+import {useAuth} from '../../contexts/AuthContext'
 
 export default function SignUp(){
   const [firstName, setFirstName] = useState('')
@@ -9,12 +9,32 @@ export default function SignUp(){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const {
+    generalsignup
+  } = useAuth()
+
+  const signUpFunc = async(e:any) => {
+    if(confirmPassword === password){
+      try{
+        await generalsignup(firstName, lastName, email, password)
+        router.push('/verification')
+      } catch(error){
+        //do something
+        if(error instanceof Error){
+          console.log(error.message)
+        }
+      }
+    }
+    else{
+      //error
+    }
+  }
   return(
     <>
       <div className={styles.authpage}>
         <center>
           <div className={styles.authbox}>
-            <Form>
+            <Form onSubmit={signUpFunc}>
               <Form.Group className="mb-3">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control type="text" onChange={(e:any) => setFirstName(e.target.value)} size="lg" />
