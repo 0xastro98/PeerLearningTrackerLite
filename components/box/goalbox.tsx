@@ -4,11 +4,19 @@ import styles from '../../styles/Home.module.css'
 import {Button} from 'react-bootstrap'
 import {ref, onValue} from 'firebase/database'
 
+//contexts
+import {useAuth} from '../../contexts/AuthContext'
+
 //utils
 import {database} from '../../utils/firebaseConfig'
 
 export default function GoalBox(props:any){
   const router = useRouter()
+  const membersRef = ref(database, ``)
+  const {
+    currentUser,
+    userEmail
+  } = useAuth()
   const goalsRef = ref(database, 'goals')
   const [goalTitle, setGoalTitle] = useState('')
   const [goalDescription, setGoalDescription] = useState('')
