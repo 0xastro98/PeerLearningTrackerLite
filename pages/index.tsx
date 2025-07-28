@@ -66,7 +66,8 @@ const Home: NextPage = () => {
        <center>
        <div className={styles.apppage}>
          <div>
-           
+           <h1><b>Learning Tracker App</b></h1>
+           <h3>Welcome {displayName}, this is an app where you can track your learning progress. There are currently {groups.length} groups and {goals.length} goals that you have set.</h3>
          </div>
              <div className={styles.blackbtn}>
               <Button variant="custom" onClick={() => setShowGoalModal(true)}>Add Goal</Button>
