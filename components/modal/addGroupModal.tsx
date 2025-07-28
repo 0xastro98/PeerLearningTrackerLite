@@ -32,7 +32,7 @@ export default function JoinGroupModal({show, onHide, groupKey, groupName} : joi
   }
   return(
     <>
-      <Modal>
+      <Modal show={show} onHide={onHide}>
         <Modal.Header closeButton>
           <Modal.Title>Join {groupName}</Modal.Title>
         </Modal.Header>

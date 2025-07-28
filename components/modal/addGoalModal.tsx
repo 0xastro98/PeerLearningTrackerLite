@@ -26,7 +26,7 @@ export default function AddGoalModal({show, onHide} : AddGoalModalProps){
   }
   return(
     <>
-      <Modal show={show}>
+      <Modal show={show} onHide={onHide}>
         <Modal.Header closeButton>
           <Modal.Title>Add A Goal</Modal.Title>
         </Modal.Header>

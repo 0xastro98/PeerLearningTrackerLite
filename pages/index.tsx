@@ -91,7 +91,7 @@ const Home: NextPage = () => {
        </center>
      </div>
 
-    <AddGoalModal show={showGoalModal} />
+    <AddGoalModal show={showGoalModal} onHide={() => setShowGoalModal(false)}/>
     </>
   );
 };
