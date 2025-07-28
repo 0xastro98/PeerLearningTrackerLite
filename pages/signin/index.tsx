@@ -47,6 +47,7 @@ export default function SignIn(){
               <Form.Group className="mb-3">
                 <div className={styles.blackbtn}>
                   <Button size="lg" variant="custom" type="submit">Sign In</Button>
+                  <Button size="lg" variant="link" onClick={() => router.push('/signup')}>Don't have an account?</Button>
                 </div>
               </Form.Group>
             </Form>

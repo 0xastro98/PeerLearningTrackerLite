@@ -21,7 +21,7 @@ export default function GoalBox(props:any){
         const val = childSnapshot.val()
         if(key === props.goalKey){
           setGoalTitle(val.title)
-          setGoalDescription(val.goalDescription)
+          setGoalDescription(val.description)
           setGoalProgress(val.goalProgress)
         }
       })

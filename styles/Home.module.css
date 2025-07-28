@@ -5,6 +5,13 @@
 .box {
   border: solid black 1px;
   border-radius: 2%;
+  padding: 2%;
+  margin: 2%;
+}
+
+.apppage {
+  width: 50%;
+  text-align: left;
 }
 .blackbtn :global(.btn-custom){
   background-color: black;

@@ -9,8 +9,7 @@ import {ref, onValue} from 'firebase/database'
 import {Button, Row, Col} from 'react-bootstrap'
 
 //modals
-import AddGoalModal from '../components/modal/addGroupModal'
-import AddGroupModal from '../components/modal/addGoalModal'
+import AddGoalModal from '../components/modal/addGoalModal'
 
 //box
 import GoalBox from '../components/box/goalbox'
@@ -27,7 +26,8 @@ const Home: NextPage = () => {
   const groupsRef = ref(database, 'groups')
   const {
     currentUser,
-    redirectTo
+    redirectTo,
+    displayName
   } = useAuth()
   const [showGroupModal, setShowGroupModal] = useState(false)
   const [showGoalModal, setShowGoalModal] = useState(false)
@@ -58,28 +58,41 @@ const Home: NextPage = () => {
       })
       setGroups([...tempGroups])
     })
-  }, [])
+  })
 
   return (
+    <>
      <div className={styles.appcontainer}>
+       <center>
        <div className={styles.apppage}>
          <div>
            
          </div>
-          <Row>
-            <Col>
-              <Button>Add Group</Button>
-            </Col>
-          </Row>
+             <div className={styles.blackbtn}>
+              <Button variant="custom" onClick={() => setShowGoalModal(true)}>Add Goal</Button>
+             </div>
            <div>
+           <h2><b>Groups</b></h2>
            {
-             groups.map((i:any) => {
+             groups.map((i:any) => 
                <GroupBox groupKey={i} />
-             })
+             )
            }
-            </div>
+           </div>
+           <div>
+             <h2><b>Goals</b></h2>
+             {
+               goals.map((i:any) =>
+                 <GoalBox goalKey={i} />
+                )
+             }
+           </div>
          </div>
+       </center>
      </div>
+
+    <AddGoalModal show={showGoalModal} />
+    </>
   );
 };
 
